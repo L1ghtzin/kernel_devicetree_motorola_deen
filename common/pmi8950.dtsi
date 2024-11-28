@@ -2,3 +2,76 @@
 	/delete-property/ qcom,clamp-curr;
 	qcom,clamp-current = <200>;
 };
+
+&spmi_bus {
+	qcom,pmi8950@2 {
+		qcom,power-on@800 {
+			qcom,shipmode;
+		};
+	};
+};
+
+&pmi8950_vadc {
+	/delete-node/ chan@d;
+};
+
+&pmi8950_mpps {
+	mpp@a000 { /* MPP1 MOD_MPHY_I2S_EN */
+		qcom,mode = <1>;	/* Digital output */
+		qcom,vin-sel = <2>;	/* 1.8 */
+		qcom,src-sel = <0>;	/* GPIO */
+		qcom,master-en = <1>;	/* Enable GPIO */
+		qcom,invert = <0>;	/* Output low (disabled) */
+		status = "okay";
+	};
+
+	mpp@a100 { /* MPP2 MOD_MPHY_I2S_SEL */
+		qcom,mode = <1>;	/* Digital output */
+		qcom,vin-sel = <2>;	/* 1.8 */
+		qcom,src-sel = <0>;	/* GPIO */
+		qcom,master-en = <1>;	/* Enable GPIO */
+		qcom,invert = <1>;	/* Output high */
+		status = "okay";
+	};
+
+	mpp@a300 { /* MPP4 MOD_BPLUS_FAULT_N */
+		qcom,mode = <0>;	/* Digital input */
+		qcom,vin-sel = <2>;	/* 1.8 */
+		qcom,src-sel = <0>;	/* GPIO */
+		qcom,master-en = <1>;	/* Enable GPIO */
+		status = "okay";
+	};
+};
+
+&pmi8950_gpios {
+	gpio@c000 { /* GPIO 1 - MOD_BPLUS_EN */
+		qcom,mode = <1>;	/* Digital output */
+		qcom,pull = <5>;	/* No Pull */
+		qcom,vin-sel = <0>;	/* 1.8 */
+		qcom,src-sel = <0>;	/* GPIO */
+		qcom,master-en = <1>;	/* Enable GPIO */
+		qcom,invert = <0>;	/* Output Low */
+		status = "okay";
+	};
+
+	gpio@c100 {
+		qcom,mode = <1>;	/* Digital output */
+		qcom,pull = <5>;	/* No Pull */
+		qcom,vin-sel = <0>;	/* 1.8 */
+		qcom,src-sel = <0>;	/* GPIO */
+		qcom,master-en = <1>;	/* Enable GPIO */
+		qcom,invert = <0>;	/* Output Low */
+		status = "okay";
+	};
+};
+
+&pmi8950_mpps {
+	mpp@a000 { /* MPP 1 - MOD_F_FLASH */
+		qcom,mode = <1>;	/* Digital output */
+		qcom,vin-sel = <2>;	/* 1.8 */
+		qcom,src-sel = <0>;	/* GPIO */
+		qcom,master-en = <1>;	/* Enable GPIO */
+		qcom,invert = <0>;	/* Output low */
+		status = "okay";
+	};
+};

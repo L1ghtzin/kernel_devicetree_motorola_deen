@@ -1,0 +1,6 @@
+#include "msm8953-stmvl53l0.dtsi"
+#include "msm8953-synaptics_dsx_i2c.dtsi"
+
+/* mods */
+// TODO: I'm not sure if they're all moto mods
+#include "moto-mods.dtsi"

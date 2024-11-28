@@ -1,0 +1,63 @@
+&pm8953_l23 {
+	qcom,init-voltage = <1200000>;
+};
+
+&pm8953_typec {
+	status = "disabled";
+};
+
+&pm8953_gpios {
+	gpio@c100 {
+		status = "okay";
+		qcom,mode = <1>; /* Digital output */
+		qcom,output-type = <0>; /* CMOS logic */
+		qcom,pull = <5>; /* From QC */
+		qcom,invert = <0>; /* Output low initially */
+		qcom,vin-sel = <3>; /* VIN 3 */
+		qcom,src-sel = <0x6>; /* DTEST3 */
+		qcom,out-strength = <2>; /* Medium */
+		qcom,master-en = <1>; /* Enable GPIO */
+		reg = <0xc100 0x100>;
+		qcom,pin-num = <2>;
+	};
+
+	gpio@c400 {
+		qcom,mode = <0>;		/* Digital Input */
+		qcom,pull = <5>;		/* No pull  */
+		qcom,vin-sel = <2>;		/* VIN0 */
+		qcom,src-sel = <0>;		/* GPIO */
+		qcom,out-strength = <2>;        /* Medium */
+		qcom,master-en = <1>;		/* Enable GPIO */
+		status = "okay";
+	};
+
+	gpio@c500 { /* GPIO 6 - USB_SELECT */
+		qcom,mode = <1>;		/* Digital Output */
+		qcom,pull = <5>;		/* No pull  */
+		qcom,vin-sel = <2>;		/* VIN0 */
+		qcom,src-sel = <0>;		/* GPIO */
+		qcom,out-strength = <2>;        /* Medium */
+		qcom,master-en = <1>;		/* Enable GPIO */
+		status = "okay";
+	};
+
+	gpio@c600 { /* GPIO 7 - USB_SS_MOD_EN */
+		qcom,mode = <1>;		/* Digital Output */
+		qcom,pull = <5>;		/* No pull  */
+		qcom,vin-sel = <2>;		/* VIN0 */
+		qcom,src-sel = <0>;		/* GPIO */
+		qcom,out-strength = <2>;        /* Medium */
+		qcom,master-en = <1>;		/* Enable GPIO */
+		status = "okay";
+	};
+
+	gpio@c700 { /* GPIO 8 - USB_SS_MOD_MPHY_AP_EN */
+		qcom,mode = <1>;		/* Digital Output */
+		qcom,pull = <5>;		/* No pull  */
+		qcom,vin-sel = <2>;		/* VIN0 */
+		qcom,src-sel = <0>;		/* GPIO */
+		qcom,out-strength = <2>;        /* Medium */
+		qcom,master-en = <1>;		/* Enable GPIO */
+		status = "okay";
+	};
+};

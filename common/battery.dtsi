@@ -1,0 +1,100 @@
+/{
+	mot_batterydata: qcom,battery-data {
+		qcom,batt-id-range-pct = <100>;
+		df-serialnum = "SNN5975";
+		#include "batterydata-gl40-sony.dtsi"
+		#include "batterydata-gl40-atl.dtsi"
+	};
+};
+
+&pmi8950_charger {
+	status = "okay";
+	pinctrl-names = "default";
+	pinctrl-0 = <&factory_default>;
+	gpios = <&pmi8950_gpios 2 0x0>, /* GPIOF_OUT_INIT_LOW */
+		<&pm8953_gpios 5 0x1>, /* GPIOF_IN */
+		<&tlmm 110 0x0>; /* GPIOF_OUT_INIT_LOW */
+	gpio-names = "eb_vbus_en",
+		     "factory_warn",
+		     "togl_rst";
+	/delete-property/ qcom,iterm-ma;
+	qcom,iterm-disabled;
+	/delete-property/ qcom,autoadjust-vfloat;
+	/delete-property/ qcom,dc-psy-type;
+	qcom,dc-psy-ma = <900>;
+	qcom,dc-psy-eff-ma = <500>;
+	qcom,fastchg-current-ma = <3000>;
+	qcom,max-usbin-current-ma = <2600>;
+	qcom,float-voltage-mv = <4400>;
+	qcom,resume-delta-mv = <200>;
+	qcom,chg-inhibit-fg;
+	qcom,rparasitic-uohm = <100000>;
+	qcom,bms-psy-name = "bms";
+	qcom,eb-batt-psy-name = "gb_battery";
+	qcom,eb-pwr-psy-name = "gb_ptp";
+	qcom,charge-unknown-battery;
+	qcom,chg-thermal-mitigation = <3000 0>,
+				      <2500 0>,
+				      <2000 0>,
+				      <1500 0>,
+				      <1000 0>,
+				      <500 0>;
+	qcom,dc-thermal-mitigation = <2000>,
+				     <1500>,
+				     <900>,
+				     <600>,
+				     <300>;
+	qcom,thermal-mitigation = <3000 0>,
+				  <2500 0>,
+				  <2000 0>,
+				  <1500 0>,
+				  <1000 0>,
+				  <500 0>,
+				  <300 0>;
+	qcom,step-chg-steps = <4200 3000 2400>,
+				<4400 2400 2000>;
+	qcom,stepchg-iterm-ma = <170>;
+	qcom,hot-temp-c = <60>;
+	qcom,cold-temp-c = <(-20)>;
+	qcom,warm-temp-c = <45>;
+	qcom,cool-temp-c = <0>;
+	qcom,ext-temp-volt-mv = <4200>;
+	qcom,hotspot-thrs-c = <50>;
+	qcom,charging-timeout-mins = <0>;
+	qcom,precharging-timeout-mins = <0>;
+	qcom,bmd-algo-disabled;
+	qcom,bmd-pin-src = "bpd_none";
+	qcom,usbid-disabled;
+	qcom,force-aicl-rerun;
+	mmi,fake-factory-type;
+	qcom,auto-voltage-comp-mv = <75>;
+	qcom,usbin-vadc = <&pmi8950_vadc>;
+	qcom,dcin-vadc = <&pmi8950_vadc>;
+
+	smbcharger_external_otg: qcom,smbcharger-external-otg {
+		status = "okay";
+		regulator-name = "smbcharger_external_otg";
+	};
+};
+
+&pmi8950_fg {
+	status = "okay";
+	qcom,warm-bat-decidegc = <450>;
+	qcom,cool-bat-decidegc = <0>;
+	qcom,hot-bat-decidegc = <600>;
+	qcom,cold-bat-decidegc = <(-200)>;
+	qcom,thermal-coefficients =  /bits/ 16 <0x6986 0x5D4B 0x6235>;
+	qcom,resume-soc = <99>;
+	qcom,bcl-lm-threshold-ma = <126>;
+	qcom,bcl-mh-threshold-ma = <400>;
+	qcom,fg-iterm-ma = <150>;
+	qcom,irq-volt-empty-mv = <2750>;
+	qcom,fg-cutoff-voltage-mv = <3000>;
+	qcom,fg-vbat-estimate-diff-mv = <1000>;
+	qcom,fg-delta-soc = <1>;
+	qcom,fg-max-soc = <100>;
+	qcom,fg-min-soc = <0>;
+	qcom,fg-cc-cv-threshold-mv = <4390>;
+	/delete-property/ qcom,capacity-learning-feedback;
+	qcom,battery-data = <&mot_batterydata>;
+};
