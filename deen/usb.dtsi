@@ -59,7 +59,8 @@
 		/delete-property/ gpio;
 	};
 
-	usb3: ssusb@7000000{
+	usb3: ssusb@7000000 {
+		extcon = <&qpnp_smbcharger>;
 		/delete-property/ pinctrl-names;
 		/delete-property/ pinctrl-0;
 		/delete-property/ qcom,otg-fault-gpio;
