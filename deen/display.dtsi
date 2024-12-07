@@ -2,6 +2,7 @@
 #include "dsi-panel/dsi-panel-mot-nova-586-hd-vid.dtsi
 
 &wled {
+	qcom,wled-stepper-en;
 	qcom,fs-curr-ua = <25000>;
 	qcom,cons-sync-write-delay-us = <1000>;
 	qcom,led-strings-list = [00 01];
