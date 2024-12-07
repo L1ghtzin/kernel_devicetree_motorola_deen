@@ -1,17 +1,5 @@
-/* Copyright (c) 2018, Motorola Mobility Inc. All rights reserved.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License version 2 and
- * only version 2 as published by the Free Software Foundation.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- */
-
 #include "dsi-panel/dsi-panel-mot-tianma-586-720p-vid.dtsi"
-#include "dsi-panel/dsi-panel-mot-nova-586-hd-vid.dtsi"
+#include "dsi-panel/dsi-panel-mot-nova-586-hd-vid.dtsi
 
 &wled {
 	qcom,fs-curr-ua = <25000>;
@@ -46,20 +34,13 @@
 
 &mdss_mdp {
 	qcom,mdss-pref-prim-intf = "dsi";
-};
 
-&mdss_dsi {
-	hw-config = "dual_dsi";
-};
-
-&mdss_dsi_active {
-        config {
-                /delete-property/ output-high;
-        };
+	mot_dba_panel: qcom,mdss_dsi_mot_dba_panel{
+		#include "dsi-panel/dsi-panel-mot-mod-fwvga-video-common.dtsi"
+	};
 };
 
 &mdss_dsi0 {
-	qcom,display-id = "primary";
 	pinctrl-names = "mdss_default", "mdss_sleep";
 	pinctrl-0 = <&mdss_dsi_active>;
 	pinctrl-1 = <&mdss_dsi_suspend>;
@@ -74,10 +55,19 @@
 	qcom,platform-reset-gpio = <&tlmm 61 0>;
 };
 
+&mdss_dsi1 {
+	status = "disabled";
+};
+
 &mdss_dsi1_pll {
 	/delete-property/ qcom,dsi-pll-ssc-en;
 	/delete-property/ qcom,dsi-pll-ssc-mode;
 };
+
+&mot_dba_panel {
+	status = "disabled";
+};
+
 
 /* display boost and inverting boost regulators */
 &labibb {
@@ -88,4 +78,3 @@
 &ibb_regulator {
 	qcom,qpnp-ibb-discharge-resistor = <32>;
 };
-

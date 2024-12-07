@@ -10,7 +10,6 @@
  * GNU General Public License for more details.
  */
 
-/* deen */
 #include "android.dtsi"
 #include "audio.dtsi"
 #include "battery.dtsi"
@@ -23,11 +22,11 @@
 #include "pinctrl.dtsi"
 #include "pmi8950.dtsi"
 #include "regulator.dtsi"
-#include "reserved-memory.dtsi"
-#include "sensor.dtsi"
+#include "sensors.dtsi"
 #include "storage.dtsi"
 #include "thermal.dtsi"
 #include "touchscreen.dtsi"
+#include "usb.dtsi"
 #include "vibrator.dtsi"
 
 #include "../common/common.dtsi"

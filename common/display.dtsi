@@ -1,3 +1,5 @@
+#include "dsi-panel/dsi-panel-mot-dummy-qhd-video.dtsi"
+
 &mdss_dsi_active {
 	config {
 		/delete-property/ output-high;

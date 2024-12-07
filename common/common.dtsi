@@ -19,7 +19,6 @@
 #include "qcom/msm8953-pinctrl.dtsi"
 
 #include "carrier-channel-ids.dtsi"
-#include "../dsi-panel/dsi-panel-mot-dummy-qhd-video.dtsi"
 #include "include/moto-mem-reserve.h"
 
 /* Custom */

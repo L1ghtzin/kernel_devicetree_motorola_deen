@@ -1,63 +1,32 @@
-/* Copyright (c) 2018, Motorola Mobility Inc. All rights reserved.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License version 2 and
- * only version 2 as published by the Free Software Foundation.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- */
-
-/ {
-	utags {
-		compatible = "mmi,utags";
-		mmi,main-utags = "/dev/block/bootdevice/by-name/utags";
-		mmi,backup-utags = "/dev/block/bootdevice/by-name/utagsBackup";
-	};
-
-	hw {
-		compatible = "mmi,utags";
-		mmi,dir-name = "hw";
-		mmi,main-utags = "/dev/block/bootdevice/by-name/hw";
-	};
-
-};
-
 &soc {
-       fusb302@22 {
-            compatible = "fairchild,fusb302";
-            reg = <0x22>;
-            gpios = <&tlmm 9 1>; /* FUSB302_INT_N, in */
-            fusb,gpio-labels = "gpio_fusb_int_n";
-            pinctrl-names = "default", "active";
-            pinctrl-0 = <&fusb302_int_default>;
-            pinctrl-1 = <&fusb302_int_active>;
-        };
 
-        qusb_phy: qusb@79000 {
-                qcom,qusb-phy-init-seq = <0xF8 0x80
-                                        0x97 0x84
-                                        0x83 0x88
-                                        0xC7 0x8C
-                                        0x14 0x9C
-                                        0x30 0x08
-                                        0x79 0x0C
-                                        0x21 0x10
-                                        0x00 0x90
-                                        0x9F 0x1C
-                                        0x00 0x18>;
-                /*Make sure QUSB PHY is into proper state to
-                  avoid interfering USB charger detection*/
-                mmi,enable-high-z-state;
-        };
+	muc: muc {
+		status = "disabled";
+		transports {
+			/delete-node/ i2c@78b5000;
+		};
+	};
+
+	spi_6: spi@7af6000 { /* BLSP2 QUP2 */
+		status = "disabled";
+	};
+
+	spi_8: spi@7af8000 { /* BLSP2 QUP3 */
+		status = "disabled";
+		/delete-node/ fpc_fpc1020@0;
+	};
+
+	i2c_4: i2c@78b8000 {
+		status = "disabled";
+		/delete-node/ motosh@43;
+	};
 
 	gpio_keys {
 		compatible = "gpio-keys";
-		label = "gpio-keys";
-		pinctrl-names = "default";
+		input-name = "gpio-keys";
+		pinctrl-names = "tlmm_gpio_key_active","tlmm_gpio_key_suspend";
 		pinctrl-0 = <&gpio_key>;
+		pinctrl-1 = <&gpio_key>;
 
 		vol_up {
 			label = "volume_up";
@@ -66,37 +35,14 @@
 			linux,code = <115>;
 			gpio-key,wakeup;
 			debounce-interval = <15>;
-			linux,can-disable;
 		};
 	};
 
-	usb_otg_switch: usb-otg-switch {
-		compatible = "regulator-fixed";
-		regulator-name = "usb_otg_vreg";
-		vin-supply = <&smbcharger_charger_otg>;
-		enable-active-high;
-		/delete-property/ gpio;
-		status = "okay";
+	i2c_2: i2c@78b6000 { /* BLSP1 QUP2 */
+		/delete-node/ cs35l34@40;
+		/delete-node/ stmvl53l0@29;
+		/delete-node/ fusb302@22;
+		/delete-node/ pnxxx@28;
+		/delete-node/ usb3813@2D;
 	};
-
-        usb3: ssusb@7000000 {
-                /delete-property/ pinctrl-names;
-                /delete-property/ pinctrl-0;
-                /delete-property/ qcom,otg-fault-gpio;
-                mmi,dcp-max-current = <2000>;
-		mmi,qos_latency = <10999>;
-		vbus_dwc3-supply = <&usb_otg_switch>;
-		psy,type-c;
-		qcom,ssusb-compliance;
-
-		dwc3@7000000 {
-			controller-number = /bits/ 8 <1>;
-		};
-	};
-};
-
-&blsp1_uart0 {
-	status = "ok";
-	pinctrl-names = "default";
-	pinctrl-0 = <&uart_console_active>;
 };
