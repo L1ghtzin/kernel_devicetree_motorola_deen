@@ -44,9 +44,6 @@
 		/delete-property/ pinctrl-13;
 		/delete-property/ pinctrl-14;
 		/delete-property/ pinctrl-15;
-
-		asoc-codec = <&stub_codec>, <&msm_digital_codec>;
-		asoc-codec-names = "msm-stub-codec.1", "msm-dig-codec";
 	};
 
 	qcom,msm-dai-mi2s {
