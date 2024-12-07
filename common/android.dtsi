@@ -1,7 +1,5 @@
 &firmware {
 	android {
-		fstab {
-			/delete-node/ vendor;
-		};
+		/delete-node/ fstab;
 	};
 };
