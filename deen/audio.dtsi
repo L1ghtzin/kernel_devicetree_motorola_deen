@@ -1,5 +1,8 @@
 &soc {
 	/delete-node/ hd3ss460;
+        /delete-node/ wsa881x_analog_vi_gpio;
+	/delete-node/ wsa881x_analog_clk_gpio;
+        /delete-node/ wsa881x_analog_reset_gpio;
 
 	sound {
 		status = "okay";
