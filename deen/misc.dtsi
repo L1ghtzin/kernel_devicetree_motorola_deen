@@ -10,6 +10,21 @@
  * GNU General Public License for more details.
  */
 
+/ {
+	utags {
+		compatible = "mmi,utags";
+		mmi,main-utags = "/dev/block/bootdevice/by-name/utags";
+		mmi,backup-utags = "/dev/block/bootdevice/by-name/utagsBackup";
+	};
+
+	hw {
+		compatible = "mmi,utags";
+		mmi,dir-name = "hw";
+		mmi,main-utags = "/dev/block/bootdevice/by-name/hw";
+	};
+
+};
+
 &soc {
        fusb302@22 {
             compatible = "fairchild,fusb302";
@@ -55,19 +70,33 @@
 		};
 	};
 
-        usb_otg_switch: usb-otg-switch {
-                vin-supply = <&smbcharger_charger_otg>;
-                /delete-property/ gpio;
-        };
+	usb_otg_switch: usb-otg-switch {
+		compatible = "regulator-fixed";
+		regulator-name = "usb_otg_vreg";
+		vin-supply = <&smbcharger_charger_otg>;
+		enable-active-high;
+		/delete-property/ gpio;
+		status = "okay";
+	};
 
         usb3: ssusb@7000000 {
                 /delete-property/ pinctrl-names;
                 /delete-property/ pinctrl-0;
                 /delete-property/ qcom,otg-fault-gpio;
                 mmi,dcp-max-current = <2000>;
-        };
+		mmi,qos_latency = <10999>;
+		vbus_dwc3-supply = <&usb_otg_switch>;
+		psy,type-c;
+		qcom,ssusb-compliance;
+
+		dwc3@7000000 {
+			controller-number = /bits/ 8 <1>;
+		};
+	};
 };
 
-
-
-
+&blsp1_uart0 {
+	status = "ok";
+	pinctrl-names = "default";
+	pinctrl-0 = <&uart_console_active>;
+};

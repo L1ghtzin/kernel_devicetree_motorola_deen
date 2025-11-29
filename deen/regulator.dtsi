@@ -19,3 +19,7 @@
 	regulator-always-on;
 	regulator-boot-on;
 };
+
+&pm8953_l23 {
+	qcom,init-voltage = <1200000>;
+};

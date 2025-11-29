@@ -20,4 +20,7 @@
 #include "pmi8950.dtsi"
 #include "soc.dtsi"
 
+#include "carrier-channel-ids.dtsi"
+#include "include/moto-mem-reserve.h"
 #include "dsi-panel/dsi-panel-mot-dummy-qhd-video.dtsi"
+

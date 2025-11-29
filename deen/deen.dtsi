@@ -23,6 +23,7 @@
 #include "pinctrl.dtsi"
 #include "pmi8950.dtsi"
 #include "regulator.dtsi"
+#include "reserved-memory.dtsi"
 #include "sensor.dtsi"
 #include "storage.dtsi"
 #include "thermal.dtsi"

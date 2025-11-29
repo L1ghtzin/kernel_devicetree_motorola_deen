@@ -13,6 +13,7 @@
 /{
 	/delete-node/ qcom,battery-data;
 	mot_batterydata: qcom,battery-data {
+		qcom,batt-id-range-pct = <100>;
 		df-serialnum = "SB18C30735";
 		#include "batterydata/batterydata-je40-scud.dtsi"
 		#include "batterydata/batterydata-je40-atl.dtsi"

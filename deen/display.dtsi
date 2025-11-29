@@ -52,8 +52,14 @@
 	hw-config = "dual_dsi";
 };
 
+&mdss_dsi_active {
+        config {
+                /delete-property/ output-high;
+        };
+};
 
 &mdss_dsi0 {
+	qcom,display-id = "primary";
 	pinctrl-names = "mdss_default", "mdss_sleep";
 	pinctrl-0 = <&mdss_dsi_active>;
 	pinctrl-1 = <&mdss_dsi_suspend>;
