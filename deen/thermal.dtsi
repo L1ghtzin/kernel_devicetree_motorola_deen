@@ -10,16 +10,12 @@
  * GNU General Public License for more details.
  */
 
-/dts-v1/;
+&soc {
+	qcom,msm-thermal {
+		qcom,config-info = "deen";
+	};
 
-
-#include "deen/deen.dtsi"
-
-
-/ {
-	model = "deen";
-	compatible = "qcom,msm8953-deen", "qcom,msm8953-moto",
-			"qcom,msm8953";
-
-	qcom,board-id = <0x4D 0xC200>;
+	qcom,bcl {
+		qcom,bcl-charger-mitigate-enable;
+	};
 };

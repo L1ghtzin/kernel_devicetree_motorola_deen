@@ -13,9 +13,13 @@
 /dts-v1/;
 
 
-#include "msm8953-deen.dtsi"
+#include "deen/deen.dtsi"
 
 
 / {
+	model = "deen";
+	compatible = "qcom,msm8953-deen", "qcom,msm8953-moto",
+			"qcom,msm8953";
+
 	qcom,board-id = <0x4D 0xC100>;
 };

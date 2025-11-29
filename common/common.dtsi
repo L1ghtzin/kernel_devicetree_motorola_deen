@@ -10,16 +10,14 @@
  * GNU General Public License for more details.
  */
 
-/dts-v1/;
+/* Custom */
+#include "qcom/msm8953.dtsi"
+#include "qcom/pmi8950.dtsi"
+#include "qcom/msm8953-pinctrl.dtsi"
 
+/* Moto */
+#include "soc.dtsi"
+#include "pmi8950.dtsi"
+#include "soc.dtsi"
 
-#include "deen/deen.dtsi"
-
-
-/ {
-	model = "deen";
-	compatible = "qcom,msm8953-deen", "qcom,msm8953-moto",
-			"qcom,msm8953";
-
-	qcom,board-id = <0x4D 0xC200>;
-};
+#include "dsi-panel/dsi-panel-mot-dummy-qhd-video.dtsi"

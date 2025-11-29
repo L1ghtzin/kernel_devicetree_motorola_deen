@@ -10,16 +10,23 @@
  * GNU General Public License for more details.
  */
 
-/dts-v1/;
+/* deen */
+#include "android.dtsi"
+#include "audio.dtsi"
+#include "battery.dtsi"
+#include "bus.dtsi"
+#include "camera.dtsi"
+#include "display.dtsi"
+#include "fingerprint.dtsi"
+#include "misc.dtsi"
+#include "nfc.dtsi"
+#include "pinctrl.dtsi"
+#include "pmi8950.dtsi"
+#include "regulator.dtsi"
+#include "sensor.dtsi"
+#include "storage.dtsi"
+#include "thermal.dtsi"
+#include "touchscreen.dtsi"
+#include "vibrator.dtsi"
 
-
-#include "deen/deen.dtsi"
-
-
-/ {
-	model = "deen";
-	compatible = "qcom,msm8953-deen", "qcom,msm8953-moto",
-			"qcom,msm8953";
-
-	qcom,board-id = <0x4D 0xC200>;
-};
+#include "../common/common.dtsi"
