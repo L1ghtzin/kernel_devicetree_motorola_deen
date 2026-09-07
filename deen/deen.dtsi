@@ -10,22 +10,34 @@
  * GNU General Public License for more details.
  */
 
+/* deen */
+
+/* base */
+#include "qcom/msm8953.dtsi"
+#include "qcom/pmi8950.dtsi"
+#include "qcom/msm8953-pinctrl.dtsi"
+
+#include "include/moto-mem-reserve.h"
+#include "carrier-channel-ids.dtsi"
+
+#include "android.dtsi"
 #include "audio.dtsi"
 #include "battery.dtsi"
 #include "bus.dtsi"
+#include "regulator.dtsi"
+#include "pm8953.dtsi"
+#include "pmi8950.dtsi"
 #include "camera.dtsi"
 #include "display.dtsi"
 #include "fingerprint.dtsi"
 #include "misc.dtsi"
 #include "nfc.dtsi"
 #include "pinctrl.dtsi"
-#include "pmi8950.dtsi"
-#include "regulator.dtsi"
+#include "reserved-memory.dtsi"
 #include "sensors.dtsi"
+#include "soc.dtsi"
 #include "storage.dtsi"
 #include "thermal.dtsi"
 #include "touchscreen.dtsi"
 #include "usb.dtsi"
 #include "vibrator.dtsi"
-
-#include "../common/common.dtsi"

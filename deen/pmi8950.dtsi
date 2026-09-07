@@ -1,3 +1,26 @@
+&flash_led {
+	/delete-property/ qcom,clamp-curr;
+	qcom,clamp-current = <200>;
+};
+
+&spmi_bus {
+	qcom,pmi8950@2 {
+		qcom,power-on@800 {
+			qcom,shipmode;
+		};
+	};
+};
+
+&pmi8950_vadc {
+	/delete-node/ chan@d;
+};
+
+#ifdef CONFIG_MSM_BCL_PERIPHERAL_CTL_LEGACY
+&bcl_sensor {
+	compatible = "qcom,msm-bcl-legacy";
+};
+#endif
+
 &spmi_bus {
 	qcom,pmi8950@2 {
 		/delete-node/ qcom,leds@a100;

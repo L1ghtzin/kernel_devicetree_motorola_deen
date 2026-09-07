@@ -1,11 +1,32 @@
+/ {
+	utags {
+		compatible = "mmi,utags";
+		mmi,main-utags = "/dev/block/bootdevice/by-name/utags";
+		mmi,backup-utags = "/dev/block/bootdevice/by-name/utagsBackup";
+	};
+
+	hw {
+		compatible = "mmi,utags";
+		mmi,dir-name = "hw";
+		mmi,main-utags = "/dev/block/bootdevice/by-name/hw";
+	};
+
+};
+
+&blsp1_uart0 {
+	status = "ok";
+	pinctrl-names = "default";
+	pinctrl-0 = <&uart_console_active>;
+};
+
+&soc { 
+	/delete-node/ adv7533@39;
+	/delete-node/ uart@78b0000;
+	/delete-node/ uart@7aef000;
+};
+
 &soc {
 
-	muc: muc {
-		status = "disabled";
-		transports {
-			/delete-node/ i2c@78b5000;
-		};
-	};
 
 	spi_6: spi@7af6000 { /* BLSP2 QUP2 */
 		status = "disabled";

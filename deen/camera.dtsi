@@ -152,8 +152,6 @@
 		qcom,clock-rates = <24000000 0>;
 	};
 
-
-
 	eeprom2: qcom,eeprom@2 {
 		cell-index = <2>;
 		reg = <0x2>;
@@ -166,19 +164,17 @@
 		qcom,cmm-data-offset = <10>;
 		qcom,cmm-data-size = <20>;
 
-		//read page 21
-		qcom,page0 = <1 0x0100 2 0x01 1 0>;//STREAM ON
+		qcom,page0 = <1 0x0100 2 0x01 1 0>;
 		qcom,poll0 = <0 0x0 2 0x0 1 0>;
 		qcom,mem0 = <0 0x0 2 0x0 1 0>;
 
-		qcom,page1 = <1 0x0A02 2 0x15 1 0>;//PAGE 20
+		qcom,page1 = <1 0x0A02 2 0x15 1 0>;
 		qcom,poll1 = <0 0x0 2 0x0 1 0>;
 		qcom,mem1 = <0 0x0 2 0x0 1 0>;
 
-		qcom,page2 = <1 0x0A00 2 0x01 1 0>;//ENABLE READ
+		qcom,page2 = <1 0x0A00 2 0x01 1 0>;
 		qcom,poll2 = <0 0x0 2 0x0 1 0>;
-		qcom,mem2 = <64 0x0A04 2 0x0 1 0>;//READ PAGE 20
-		//read page 22
+		qcom,mem2 = <64 0x0A04 2 0x0 1 0>;
 		qcom,page3 = <1 0x0100 2 0x01 1 0>;
 		qcom,poll3 = <0 0x0 2 0x0 1 0>;
 		qcom,mem3 = <0 0x0 2 0x0 1 0>;
@@ -190,8 +186,6 @@
 		qcom,page5 = <1 0x0A00 2 0x01 1 0>;
 		qcom,poll5 = <0 0x0 2 0x0 1 0>;
 		qcom,mem5 = <64 0x0A04 2 0x0 1 0>;
-		//read page 23
-
 		qcom,page6 = <1 0x0100 2 0x01 1 0>;
 		qcom,poll6 = <0 0x0 2 0x0 1 0>;
 		qcom,mem6 = <0 0x0 2 0x0 1 0>;
@@ -202,10 +196,8 @@
 
 		qcom,page8 = <1 0x0A00 2 0x01 1 0>;
 		qcom,poll8 = <0 0x0 2 0x0 1 0>;
-		qcom,mem8 = <64 0x0A04 2 0x0 1 0>;//tes1 pass
+		qcom,mem8 = <64 0x0A04 2 0x0 1 0>;
 
-
-		//read page 24
 		qcom,page9 = <1 0x0100 2 0x01 1 0>;
 		qcom,poll9 = <0 0x0 2 0x0 1 0>;
 		qcom,mem9 = <0 0x0 2 0x0 1 0>;
@@ -217,7 +209,6 @@
 		qcom,page11 = <1 0x0A00 2 0x01 1 0>;
 		qcom,poll11 = <0 0x0 2 0x0 1 0>;
 		qcom,mem11 = <64 0x0A04 2 0x0 1 0>;
-		//read page 25
 		qcom,page12 = <1 0x0100 2 0x01 1 0>;
 		qcom,poll12 = <0 0x0 2 0x0 1 0>;
 		qcom,mem12 = <0 0x0 2 0x0 1 0>;
@@ -230,7 +221,6 @@
 		qcom,poll14 = <0 0x0 2 0x0 1 0>;
 		qcom,mem14 = <64 0x0A04 2 0x0 1 0>;
 
-		//read page 26
 		qcom,page15 = <1 0x0100 2 0x01 1 0>;
 		qcom,poll15 = <0 0x0 2 0x0 1 0>;
 		qcom,mem15 = <0 0x0 2 0x0 1 0>;
@@ -243,7 +233,6 @@
 		qcom,poll17 = <0 0x0 2 0x0 1 0>;
 		qcom,mem17 = <64 0x0A04 2 0x0 1 0>;
 
-		//read page 27
 		qcom,page18 = <1 0x0100 2 0x01 1 0>;
 		qcom,poll18 = <0 0x0 2 0x0 1 0>;
 		qcom,mem18 = <0 0x0 2 0x0 1 0>;
@@ -255,7 +244,6 @@
 		qcom,page20 = <1 0x0A00 2 0x01 1 0>;
 		qcom,poll20 = <0 0x0 2 0x0 1 0>;
 		qcom,mem20 = <64 0x0A04 2 0x0 1 0>;
-		//read page 28
 		qcom,page21 = <1 0x0100 2 0x01 1 0>;
 		qcom,poll21 = <0 0x0 2 0x0 1 0>;
 		qcom,mem21 = <0 0x0 2 0x0 1 0>;
@@ -268,7 +256,6 @@
 		qcom,poll23 = <0 0x0 2 0x0 1 0>;
 		qcom,mem23 = <64 0x0A04 2 0x0 1 0>;
 
-		//read page 29
 		qcom,page24 = <1 0x0100 2 0x01 1 0>;
 		qcom,poll24 = <0 0x0 2 0x0 1 0>;
 		qcom,mem24 = <0 0x0 2 0x0 1 0>;
@@ -281,7 +268,6 @@
 		qcom,poll26 = <0 0x0 2 0x0 1 0>;
 		qcom,mem26 = <64 0x0A04 2 0x0 1 0>;
 
-		//read page 30
 		qcom,page27 = <1 0x0100 2 0x01 1 0>;
 		qcom,poll27 = <0 0x0 2 0x0 1 0>;
 		qcom,mem27 = <0 0x0 2 0x0 1 0>;
@@ -292,9 +278,8 @@
 
 		qcom,page29 = <1 0x0A00 2 0x01 1 0>;
 		qcom,poll29 = <0 0x0 2 0x0 1 0>;
-		qcom,mem29 = <64 0x0A04 2 0x0 1 0>;//test2 failed
+		qcom,mem29 = <64 0x0A04 2 0x0 1 0>;
 
-		//read page 31
 		qcom,page30 = <1 0x0100 2 0x01 1 0>;
 		qcom,poll30 = <0 0x0 2 0x0 1 0>;
 		qcom,mem30 = <0 0x0 2 0x0 1 0>;
@@ -307,7 +292,6 @@
 		qcom,poll32 = <0 0x0 2 0x0 1 0>;
 		qcom,mem32 = <64 0x0A04 2 0x0 1 0>;
 
-		//read page 32
 		qcom,page33 = <1 0x0100 2 0x01 1 0>;
 		qcom,poll33 = <0 0x0 2 0x0 1 0>;
 		qcom,mem33 = <0 0x0 2 0x0 1 0>;
@@ -598,7 +582,6 @@
 				drive-strength = <2>; /* 2 MA */
 			};
 		};
-
 
 		cam_sensor_mclk2_default: cam_sensor_mclk2_default {
 			/* MCLK2 */

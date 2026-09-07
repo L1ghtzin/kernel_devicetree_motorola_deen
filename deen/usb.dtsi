@@ -1,8 +1,4 @@
 &soc {
-	fsusb42 {
-		status = "disabled";
-	};
-
 	i2c_1: i2c@78b5000 {
 		compatible = "qcom,i2c-msm-v2";
 		#address-cells = <1>;
@@ -54,16 +50,23 @@
 		mmi,enable-high-z-state;
 	};
 
-	usb_otg_switch: usb-otg-switch {
-		vin-supply = <&smbcharger_charger_otg>;
-		/delete-property/ gpio;
+	usb3: ssusb@7000000{
+		mmi,qos_latency = <10999>;
+		vbus_dwc3-supply = <&usb_otg_switch>;
+		psy,type-c;
+		extcon = <&qpnp_smbcharger>;
+		qcom,ssusb-compliance;
+		mmi,dcp-max-current = <2000>;
+		dwc3@7000000 {
+			controller-number = /bits/ 8 <1>;
+		};
 	};
 
-	usb3: ssusb@7000000 {
-		extcon = <&qpnp_smbcharger>;
-		/delete-property/ pinctrl-names;
-		/delete-property/ pinctrl-0;
-		/delete-property/ qcom,otg-fault-gpio;
-		mmi,dcp-max-current = <2000>;
+	usb_otg_switch: usb-otg-switch {
+		compatible = "regulator-fixed";
+		regulator-name = "usb_otg_vreg";
+		vin-supply = <&smbcharger_charger_otg>;
+		enable-active-high;
+		status = "okay";
 	};
 };

@@ -41,23 +41,4 @@
 		status = "okay";
 	};
 
-	gpio@c600 { /* GPIO 7 - USB_SS_MOD_EN */
-		qcom,mode = <1>;		/* Digital Output */
-		qcom,pull = <5>;		/* No pull  */
-		qcom,vin-sel = <2>;		/* VIN0 */
-		qcom,src-sel = <0>;		/* GPIO */
-		qcom,out-strength = <2>;        /* Medium */
-		qcom,master-en = <1>;		/* Enable GPIO */
-		status = "okay";
-	};
-
-	gpio@c700 { /* GPIO 8 - USB_SS_MOD_MPHY_AP_EN */
-		qcom,mode = <1>;		/* Digital Output */
-		qcom,pull = <5>;		/* No pull  */
-		qcom,vin-sel = <2>;		/* VIN0 */
-		qcom,src-sel = <0>;		/* GPIO */
-		qcom,out-strength = <2>;        /* Medium */
-		qcom,master-en = <1>;		/* Enable GPIO */
-		status = "okay";
-	};
 };

@@ -1,5 +1,20 @@
+
+&mdss_dsi_active {
+	config {
+		/delete-property/ output-high;
+	};
+};
+
+&mdss_mdp {
+	qcom,mdss-pref-prim-intf = "dsi";
+};
+
+&mdss_dsi0 {
+	qcom,display-id = "primary";
+};
+
 #include "dsi-panel/dsi-panel-mot-tianma-586-720p-vid.dtsi"
-#include "dsi-panel/dsi-panel-mot-nova-586-hd-vid.dtsi
+#include "dsi-panel/dsi-panel-mot-nova-586-hd-vid.dtsi"
 
 &wled {
 	qcom,wled-stepper-en;
@@ -36,9 +51,6 @@
 &mdss_mdp {
 	qcom,mdss-pref-prim-intf = "dsi";
 
-	mot_dba_panel: qcom,mdss_dsi_mot_dba_panel{
-		#include "dsi-panel/dsi-panel-mot-mod-fwvga-video-common.dtsi"
-	};
 };
 
 &mdss_dsi0 {
@@ -65,9 +77,6 @@
 	/delete-property/ qcom,dsi-pll-ssc-mode;
 };
 
-&mot_dba_panel {
-	status = "disabled";
-};
 
 
 /* display boost and inverting boost regulators */
